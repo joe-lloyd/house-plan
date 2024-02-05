@@ -3,7 +3,7 @@ import React from "react";
 interface RoomTextProps {
   name: string;
   scale: number;
-  area: number;
+  area: string;
 }
 
 const RoomNameText: React.FC<RoomTextProps> = ({ name, scale , area}) => {

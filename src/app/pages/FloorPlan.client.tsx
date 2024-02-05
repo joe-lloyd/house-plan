@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { MouseEventHandler, useState, WheelEventHandler } from "react";
 import Bedroom1 from "@/app/components/newApartment/Bedroom1";
 import Hall from "@/app/components/newApartment/Hall";
 import Toilet from "@/app/components/newApartment/Toilet";
@@ -22,7 +22,7 @@ const FloorPlanClient: React.FC = () => {
   const [offsetX, setOffsetX] = useState(0);
   const [offsetY, setOffsetY] = useState(0);
 
-  const handleWheel = (e) => {
+  const handleWheel: WheelEventHandler<HTMLDivElement> = (e) => {
     const scaleChangeFactor = e.deltaY < 0 ? 1.05 : 0.95;
 
     const newScale = scale * scaleChangeFactor;
@@ -37,14 +37,14 @@ const FloorPlanClient: React.FC = () => {
   const { showApartment } = useApartmentToggle();
 
 
-  const handleMouseDown = (e) => {
+  const handleMouseDown: MouseEventHandler<HTMLDivElement> = (e) => {
     const startX = e.pageX;
     const startY = e.pageY;
     const startOffsetX = offsetX;
     const startOffsetY = offsetY;
 
 
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
       const newOffsetX = (e.pageX - startX) / scale + startOffsetX;
       const newOffsetY = (e.pageY - startY) / scale + startOffsetY;
 

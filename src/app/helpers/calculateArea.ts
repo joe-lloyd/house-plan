@@ -1,4 +1,4 @@
-const calculatePolygonArea = (points: [number, number][]): number => {
+const calculatePolygonArea = (points: [number, number][]): string => {
   const area = points.reduce((acc, [x, y], i, arr) => {
     const [nextX, nextY] = arr[(i + 1) % arr.length];
     // Convert coordinates to meters before calculation

@@ -1,4 +1,5 @@
 import { useApartmentToggle } from "@/app/providers/ApartmentToggleProvider";
+import { CSSProperties } from "react";
 
 const ApartmentToggle = () => {
   const { showApartment, toggleShowApartment } = useApartmentToggle();
@@ -7,7 +8,7 @@ const ApartmentToggle = () => {
     toggleShowApartment(!showApartment);
   };
 
-  const toggleButtonStyle = {
+  const toggleButtonStyle: CSSProperties = {
     position: 'fixed',
     right: '20px',
     bottom: '20px',

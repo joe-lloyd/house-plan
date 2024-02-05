@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, ReactNode, useContext, useState } from "react";
 
 type ApartmentToggleType = {
   showApartment: boolean;
@@ -12,7 +12,7 @@ const ApartmentToggleContext = createContext<ApartmentToggleType>({
 
 export const useApartmentToggle = () => useContext(ApartmentToggleContext);
 
-const ApartmentToggleProvider = ({ children }) => {
+const ApartmentToggleProvider = ({ children }: { children: ReactNode }) => {
   const [showApartment, toggleShowApartment] = useState(true);
 
   return (

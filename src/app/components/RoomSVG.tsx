@@ -9,17 +9,20 @@ interface RoomSVGProps {
 }
 
 // Function to calculate distance between two points
-const calculateDistance = ([startPointX, startPointY], [endPointX, endPointY]) => {
+const calculateDistance = ([startPointX, startPointY]: [number, number], [endPointX, endPointY]: [number, number]) => {
   return Math.sqrt(Math.pow(endPointX - startPointX, 2) + Math.pow(endPointY - startPointY, 2));
 };
 
 // Function to calculate the midpoint for label positioning
-const calculateMidpoint = ([startPointX, startPointY], [endPointX, endPointY]) => {
+const calculateMidpoint = ([startPointX, startPointY]: [number, number], [endPointX, endPointY]: [number, number]): [number, number] => {
   return [(endPointX + startPointX) / 2, (endPointY + startPointY) / 2];
 };
 
 const RoomSVG: React.FC<RoomSVGProps> = ({ name, points, color, scale }) => {
-  const pointsArray = points.split(" ").map(point => point.split(",").map(Number));
+  const pointsArray: [number, number][] = points.split(" ").map(point => {
+    const [x, y] = point.split(",").map(Number);
+    return [x, y] as [number, number];
+  });
 
   // Find min and max x and y to calculate width and height
   const minX = Math.min(...pointsArray.map(point => point[0]));
@@ -37,7 +40,7 @@ const RoomSVG: React.FC<RoomSVGProps> = ({ name, points, color, scale }) => {
 
   const sides = pointsArray.map((point, index, array) => {
     const nextPoint = array[(index + 1) % array.length]; // Ensures the last point connects to the first
-    const distance = calculateDistance(point, nextPoint).toFixed(2) / 1000; // Distance between points
+    const distance = (calculateDistance(point, nextPoint) / 1000).toFixed(2); // Distance between points
     const midpoint = calculateMidpoint(point, nextPoint); // Midpoint for text label
     return { distance, midpoint };
   });

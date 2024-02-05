@@ -10,11 +10,8 @@ interface MeasurementTextProps {
   scale: number;
 }
 
-// const isHorizontal = ([x1, y1], [x2, y2]) => {
-//     return y1 === y2;
-// };
 // Function to calculate the midpoint for label positioning
-const calculateChange = ([startPointX, startPointY], [endPointX, endPointY]) => {
+const calculateChange = ([startPointX, startPointY]: [number, number], [endPointX, endPointY]: [number, number]) => {
   let dx = endPointX - startPointX;
   let dy = endPointY - startPointY;
   return [dx, dy];
