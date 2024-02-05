@@ -228,3 +228,28 @@
     transform: rotate(0deg);
   }
 }
+
+/* styles/global.css */
+
+/* Apply a basic reset to remove default margins and padding */
+html, body, div, span {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+}
+
+/* Set the background color and font for the entire page */
+body {
+  background-color: #f0f0f0; /* Light gray background for contrast */
+  font-family: Arial, sans-serif; /* Arial font for readability */
+  line-height: 1;
+}
+
+/* Style for the container holding the rooms */
+.container {
+  position: relative; /* Needed for absolute positioning of child divs */
+  width: max-content; /* Adjust width to the content */
+  height: max-content; /* Adjust height to the content */
+  margin: 20px; /* Add some margin around the container */
+}
